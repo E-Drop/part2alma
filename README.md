@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To start the project you need first download and execute the project api-alma that give you the api runing with the boats data
 
 ## Available Scripts
 
