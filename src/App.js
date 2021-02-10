@@ -11,7 +11,17 @@ function App(props) {
   useEffect(() => {
     axios
       .get('http://localhost:4000/')
-      .then(response => dispatch(allActions.boatsActions.addBoats(response.data.features)));
+      .then(response => {
+        dispatch(allActions.boatsActions.addBoats(response.data.features))
+        const materials = [];
+
+        response.data.features.length && response.data.features.map((boat, key) => {
+          if(!materials.includes(boat.properties.material)) {
+            materials.push(boat.properties.material);
+          }
+        })
+        dispatch(allActions.boatsActions.addMaterials(materials));
+      });
   }, []);
   
   return (

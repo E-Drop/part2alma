@@ -18,8 +18,24 @@ const clearFilters = (payload) => {
   }
 }
 
+const addMaterials = (payload) => {
+  return { 
+    type: 'ADD_MATERIALS',
+    payload: payload
+  }
+}
+
+const selectMaterial = (payload) => {
+  return { 
+    type: 'SELECT_MATERIAL',
+    payload: payload
+  }
+}
+
 export default {
   addBoats,
   filterBoats,
-  clearFilters
+  clearFilters,
+  addMaterials,
+  selectMaterial
 }
