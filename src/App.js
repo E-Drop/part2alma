@@ -13,11 +13,12 @@ function App(props) {
       .get('http://localhost:4000/')
       .then(response => {
         dispatch(allActions.boatsActions.addBoats(response.data.features))
-        const materials = [];
-
+        const materialsName = [];
+        const materials= [];
         response.data.features.length && response.data.features.map((boat, key) => {
-          if(!materials.includes(boat.properties.material)) {
-            materials.push(boat.properties.material);
+          if(!materialsName.includes(boat.properties.material)) {
+            materialsName.push(boat.properties.material);
+            materials.push({material:boat.properties.material, number: response.data.features.filter(x => x.properties.material === boat.properties.material).length});
           }
         })
         dispatch(allActions.boatsActions.addMaterials(materials));

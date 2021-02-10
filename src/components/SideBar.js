@@ -7,7 +7,7 @@ function SideBar() {
   const materials = useSelector(state => state.boats.materials);
   const selectedMaterial = useSelector(state => state.boats.selectedMaterial);
   const dispatch = useDispatch();
-  
+
   return (
     <div className="Sidebar">
       <div className="row">
@@ -15,11 +15,11 @@ function SideBar() {
       </div>
       {materials && materials.map((material, key) =>
         <div className={`row ${material === selectedMaterial && "active"}`} key={key} onClick={() => {
-          dispatch(allActions.boatsActions.filterBoats(material))
+          dispatch(allActions.boatsActions.filterBoats(material.material))
           dispatch(allActions.boatsActions.selectMaterial(material))
         }}>
-          <p>{material}</p>
-          <p>{allBoats.filter(x => x.properties.material === material).length}</p>
+          <p>{material.material}</p>
+          <p>{material.number}</p>
         </div>
       )}
       <button onClick={()=> dispatch(allActions.boatsActions.clearFilters())}>Clear filters</button>
